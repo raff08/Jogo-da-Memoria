@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* pra centralizar o gameboard  */
+    background-color: #c7cdd3 ;
+}
+
+.card {
+    width: 150px;
+    height: 150px;
+    position: relative; /* posição relativa para deixar o card front e back em posição absoluta em relação ao pai (card) e não sobre o body */
+    
+    transform-style: preserve-3d; /*Passando o estilo do transform para que a carta fique "3d"*/
+    transition: transform .5s; /* passando uma transição para o transform*/ 
+}
+
+.card_back,.card_front {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+    backface-visibility: hidden; /*Todas as faces que estiverem invertidas não vao estar visiveis*/
+}
+
+.flip {
+    transform: rotateY(180deg); /*quando a classe for inserida a carta vai flipar*/
+}
+
+.card_front {
+ transform: rotateY(180deg); /*Rotacionado o eixo y para que a carta não fique virada quando flipar*/
+ background-color: #101c2c;
+}
+
+.card_back {
+    color: #101c2c;
+    background-color: #05c3ff;
+    font-size: 30px;
+}
+
+#gameOver {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    font-size: 50px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    top: 0;
+
+}
+
+#restart {
+    padding: 20px;
+    font-size: 20px;
+    background-color: yellow;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#gameBoard {
+    
+    max-width: 700px;
+    display: grid;
+    grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+    gap: 20px;
+
+}
